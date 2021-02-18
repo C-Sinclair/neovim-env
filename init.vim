@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader = ";"
 
 source $HOME/.config/nvim/package.vim
 
@@ -13,6 +13,7 @@ nnoremap c "_c
 nmap <Leader><Tab> :bn<cr>      " Switch buffers
 nmap <Leader><S-Tab> :bN<cr>      " Switch buffers
 nmap \q :Bdelete<cr>              " Close buffer
+nmap <Leader>f :MaximizerToggle<cr> " Maximise current buffer
 
 " Shortcutting split navigation
 map <C-h> <C-w>h

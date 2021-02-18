@@ -18,12 +18,19 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Comments
 Plug 'tpope/vim-commentary'
+" Git 
+Plug 'airblade/vim-gitgutter'
 " Testing
 Plug 'vim-test/vim-test'
 " Close buffers
 Plug 'moll/vim-bbye'
+" Maximise buffers
+Plug 'szw/vim-maximizer'
 " Autocomplete
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
+" Typescript specific
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 " Theme
