@@ -21,6 +21,7 @@ Plug 'tpope/vim-commentary'
 " Git 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'stsewd/fzf-checkout.vim'
 " Testing
 Plug 'vim-test/vim-test'
 " Close buffers
