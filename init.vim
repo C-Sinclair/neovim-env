@@ -50,6 +50,16 @@ if !exists('g:vscode')
 elseif
     source $HOME/.config/nvim/vspackage.vim
 
+    nnoremap <C-w> call VSCodeNotify('workbench.action.closeGroup')
 
+    " Navigation between splits
+    nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')
+    xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')
+    nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')
+    xnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')
+    nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')
+    xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')
+    nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')
+    xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')
 endif
 

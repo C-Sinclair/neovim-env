@@ -1,6 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
-let g:netrw_dirhist_4='/home/conor/.config/nvim/plugin'
-let g:netrw_dirhist_3='/home/conor/.config/nvim'
-let g:netrw_dirhist_2='/home/conor/.config/nvim/plugin'
-let g:netrw_dirhist_1='/'
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/conor/Repos/TalentTicker/webapp-frontend/components/organisms/VincereModal'
+let g:netrw_dirhist_8='/home/conor/.config/nvim/plugged/vimspector/support/test/node'
+let g:netrw_dirhist_7='/home/conor/.config/nvim/plugged/vimspector/support/test/chrome'
+let g:netrw_dirhist_6='/home/conor/.config/nvim/plugged/vimspector/support/test/example'
+let g:netrw_dirhist_5='/home/conor/.config/nvim/plugged/vimspector/support/test/node'
+let g:netrw_dirhist_4='/home/conor/.config/nvim/plugged/vimspector/support/test/node/simple'
+let g:netrw_dirhist_3='/home/conor/.config/nvim/plugged/vimspector/support/test/node'
+let g:netrw_dirhist_2='/home/conor/.config/nvim/plugged/vimspector/support/test/example'
+let g:netrw_dirhist_1='/home/conor/.config/nvim/plugged/vimspector/support/test/chrome'
