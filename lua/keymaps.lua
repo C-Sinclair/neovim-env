@@ -48,3 +48,9 @@ set_keymap('v', '<', '<gv', { noremap = true, silent = true })
 -- splits
 set_keymap('n', '<Leader>l', ':vsp<CR>', {})
 set_keymap('n', '<Leader><Esc>', ':close<CR>', {})
+
+-- terminal
+set_keymap('n', '<Leader>t', ':terminal<CR>', { noremap = true })
+set_keymap('t', '<Esc>', [[ <C-\><C-n> ]], { noremap = true })
+set_keymap('t', '<C-h>', '<C-h>', { noremap = true })
+set_keymap('t', '<C-l>', '<C-l>', { noremap = true })
