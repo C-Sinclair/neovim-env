@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/conor/Repos/jarun'
+let g:netrw_dirhist_6='/home/conor/Repos/jarun/nnn'
+let g:netrw_dirhist_5='/home/conor/Repos/jarun/nnn/plugins'
 let g:netrw_dirhist_4='/home/conor/.config/nvim/plugin'
 let g:netrw_dirhist_3='/home/conor/.config/nvim'
 let g:netrw_dirhist_2='/home/conor/.config/nvim/plugin'
