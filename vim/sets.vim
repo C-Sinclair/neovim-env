@@ -10,8 +10,9 @@ set nobackup
 set nowritebackup
 
 " Tabs
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 
@@ -57,3 +58,4 @@ hi Comment cterm=italic
 
 " Background
 highlight Normal guibg=none
+
