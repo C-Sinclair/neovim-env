@@ -20,10 +20,10 @@ set_keymap('n', '<Leader><S-Tab>', ':bN<CR>', { noremap = true, silent = true })
 set_keymap('n', '<Leader>q', 'bdelete<CR>', { noremap = true, silent = true })
 
 -- movements
-set_keymap('n', '<C-h>', '<C-w>h<CR>', { silent = true })
-set_keymap('n', '<C-j>', '<C-w>j<CR>', { silent = true })
-set_keymap('n', '<C-k>', '<C-w>k<CR>', { silent = true })
-set_keymap('n', '<C-l>', '<C-w>l<CR>', { silent = true })
+set_keymap('n', '<C-h>', '<C-w>h<CR>', { silent = true, noremap = true })
+set_keymap('n', '<C-j>', '<C-w>j<CR>', { silent = true, noremap = true })
+set_keymap('n', '<C-k>', '<C-w>k<CR>', { silent = true, noremap = true })
+set_keymap('n', '<C-l>', '<C-w>l<CR>', { silent = true, noremap = true })
 
 -- misc
 set_keymap('n', '<Leader>h', ':nohlsearch<CR>', {})

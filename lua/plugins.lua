@@ -16,13 +16,11 @@ return require'packer'.startup(function()
     }
 
     use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-compe'
     
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     use 'wakatime/vim-wakatime'
-
-    -- use { 'junegunn/fzf', run = function() vim.fn['fzf#install()'](0) end  }
-    -- use 'junegunn/fzf.vim'
 
     use 'liuchengxu/space-vim-dark'
     

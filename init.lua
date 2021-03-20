@@ -4,5 +4,6 @@ vim.g.mapleader = ' '
 vim.cmd('source $HOME/.config/nvim/vim/sets.vim')
 
 require('plugins')
+require('my-lsp')
 require('keymaps')
 require('commands')
