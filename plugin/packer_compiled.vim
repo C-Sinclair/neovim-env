@@ -45,9 +45,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

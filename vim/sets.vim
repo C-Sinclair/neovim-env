@@ -51,3 +51,9 @@ set shortmess+=c
 
 set wildcharm=<C-z>
 
+set termguicolors     " enable true colors support
+colorscheme space-vim-dark
+hi Comment cterm=italic
+
+" Background
+highlight Normal guibg=none
