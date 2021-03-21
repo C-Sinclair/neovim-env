@@ -1,54 +1,50 @@
-local ncommands = {}
-local icommands = {}
-local vcommands = {}
+local set_keymap = vim.api.nvim_set_keymap
 
 -- run file
-ncommands[[ <Leader>r ]] = [[ :Runfile %<CR> ]]
+set_keymap('n', '<Leader>r', [[ :Runfile %<CR> ]], {})
 
 -- tree
-ncommands['<Leader>e'] = ':NvimTreeToggle<CR>'
+set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- command pallete
-ncommands['<Leader>b'] = ':Buffers<CR>'
-ncommands['<Leader>p'] = ':Files<CR>'
-ncommands['<Leader>f'] = ':Ag<CR>' 
+set_keymap('n', '<Leader>b', ':Buffers<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>p', ':Files<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>f', ':Ag<CR>', { noremap = true, silent = true })
 
 -- git
-ncommands['<Leader>gs'] = ':G<CR>'
+set_keymap('n', '<Leader>gs', ':G<CR>', { noremap = true, silent = true })
 
 -- buffers
-ncommands['<Leader><Tab>'] = ':bn<CR>'
-ncommands['<Leader><S-Tab>'] = ':bN<CR>'
-ncommands['<Leader>q'] = 'bdelete<CR>'
+set_keymap('n', '<Leader><Tab>', ':bn<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader><S-Tab>', ':bN<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>q', 'bdelete<CR>', { noremap = true, silent = true })
 
 -- movements
-ncommands['<C-h>'] = '<C-w>h<CR>'
-ncommands['<C-j>'] = '<C-w>j<CR>'
-ncommands['<C-k>'] = '<C-w>k<CR>'
-ncommands['<C-l>'] = '<C-w>l<CR>'
+set_keymap('n', '<C-h>', '<C-w>h<CR>', { silent = true })
+set_keymap('n', '<C-j>', '<C-w>j<CR>', { silent = true })
+set_keymap('n', '<C-k>', '<C-w>k<CR>', { silent = true })
+set_keymap('n', '<C-l>', '<C-w>l<CR>', { silent = true })
 
 -- misc
-ncommands['<Leader>h'] = ':nohlsearch<CR>'
-ncommands['c'] = '"_c'
+set_keymap('n', '<Leader>h', ':nohlsearch<CR>', {})
+set_keymap('n', 'c', '"_c', { noremap = true })
 
 -- move lines
-vcommands['J'] = [[ '>+1<cr>gv=gv ]]
-vcommands['K'] = [[ '<-2<cr>gv=gv ]]
+set_keymap('v', 'J', [[ '>+1<cr>gv=gv ]], {})
+set_keymap('v', 'K', [[ '<-2<cr>gv=gv ]], {})
 
--- search
-vcommands['*'] = [[ y:let @/=@"<CR> ]]
+-- search -- TODO not working
+-- set_keymap('v', '*', [[ y:let @/=@"<CR> ]], {}) 
 
 -- insert mode
-icommands['<C-S>'] = '<Esc>:w<cr>'
-icommands[';;'] = '<Esc>A;<Esc>gi'
-icommands[',,'] = '<Esc>A,<Esc>gi'
+set_keymap('i', '<C-S>', '<Esc>:w<CR>', {})
+set_keymap('i', ';;', '<Esc>A;<Esc>gi', {})
+set_keymap('i', ',,', '<Esc>A,<Esc>gi', {})
 
-for k, v in pairs(ncommands) do
-	vim.api.nvim_set_keymap('n', k, v, { noremap = true, silent = true }) 
-end
-for k, v in pairs(icommands) do
-	vim.api.nvim_set_keymap('i', k, v, { noremap = true, silent = true }) 
-end
-for k, v in pairs(vcommands) do
-	vim.api.nvim_set_keymap('v', k, v, { noremap = true, silent = true }) 
-end
+-- tabbing
+set_keymap('v', '>', '>gv', { noremap = true, silent = true })
+set_keymap('v', '<', '<gv', { noremap = true, silent = true })
+
+-- splits
+set_keymap('n', '<Leader>l', ':vsp<CR>', {})
+set_keymap('n', '<Leader><Esc>', ':close<CR>', {})
