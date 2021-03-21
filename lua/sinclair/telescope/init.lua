@@ -1,28 +1,33 @@
 local actions = require'telescope.actions'
+local previewers = require'telescope.previewers'
+local pickers = require'telescope.pickers'
+local sorters = require'telescope.sorters'
+local finders = require'telescope.finders'
 
 require'telescope'.setup {
-   defaults = {
-        file_sorter = require('telescope.sorters').get_fzy_sorter,
-        prompt_prefix = ' >',
-        color_devicons = true,
+  defaults = {
+    file_sorter = require('telescope.sorters').get_fzy_sorter,
+    prompt_prefix = ' >',
+    color_devicons = true,
 
-        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+    file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+    grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
 
-        mappings = {
-            i = {
-                ["<C-x>"] = false,
-                ["<C-q>"] = actions.send_to_qflist,
-            },
-        }
-    },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<C-x>"] = false,
+        ["<C-q>"] = actions.send_to_qflist,
+      },
     }
+  },
+  extensions = {
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+    }
+  }
 }
 
 require'telescope'.load_extension('fzy_native')
@@ -44,6 +49,20 @@ M.git_branches = function()
       return true
     end
   })
+end
+
+M.git_prs = function()
+  pickers.new {
+  results_title = 'Resources',
+  finder = finders.new_oneshot_job({'gh', 'pr', 'list'}),
+  sorter = sorters.get_fuzzy_file(),
+  previewer = previewers.new_termopen_previewer {
+    get_command = function(entry)
+      -- might have to do a funky split to get the number
+      return {'gh', 'pr', 'view', entry.value}
+    end
+  },
+}:find()
 end
 
 require'sinclair.telescope.keymaps'
