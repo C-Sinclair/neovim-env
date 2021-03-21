@@ -1,3 +1,5 @@
+local execute = vim.api.nvim_command
+
 local M = {}
 
 function M.is_buffer_empty()
@@ -10,5 +12,14 @@ function M.has_width_gt(cols)
   return vim.fn.winwidth(0) / 2 > cols
 end
 
+function M.create_augroup(name, cmds)
+  execute('augroup '..name)
+  execute('autocmd!')
+  for _, def in ipairs(cmds) do
+    local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+    execute(command)
+  end
+  execute('augroup END')
+end
 
 return M

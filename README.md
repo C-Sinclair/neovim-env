@@ -11,6 +11,9 @@
 - [ ] should structure config better, by concepts not just mappings etc
 - [ ] gh pr in telescope
 - [ ] search gh repos in telescope
+- [ ] goto TODO
+- [ ] popout terminal
+- [ ] start screen of recent buffers
 
 ### IDEAS
 - search stackoverflow/google in telescope? 

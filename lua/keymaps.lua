@@ -6,18 +6,15 @@ set_keymap('n', '<Leader>r', [[ :Runfile %<CR> ]], {})
 -- tree
 set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
--- command pallete
-set_keymap('n', '<Leader>b', [[ :lua require'telescope.builtin'.buffers()<CR> ]],  { noremap = true })
-set_keymap('n', '<Leader>p', [[ :lua require'telescope.builtin'.find_files()<CR>]], { noremap = true })
-set_keymap('n', '<Leader>f', [[ :lua require'telescope.builtin'.live_grep()<CR>]], { noremap = true })
-
--- git
-set_keymap('n', '<Leader>gs', ':G<CR>', { noremap = true, silent = true })
-
--- buffers
+-- switch buffers
 set_keymap('n', '<Leader><Tab>', ':bn<CR>', { noremap = true, silent = true })
 set_keymap('n', '<Leader><S-Tab>', ':bN<CR>', { noremap = true, silent = true })
-set_keymap('n', '<Leader>q', 'bdelete<CR>', { noremap = true, silent = true })
+
+-- TODO fix this mapping
+-- set_keymap('n', '<Leader>q', 'bdelete<CR>', { noremap = true })
+
+-- maximise buffer
+set_keymap('n', '<Leader>f', ':MaximizerToggle!<CR>', { noremap = true })
 
 -- movements
 set_keymap('n', '<C-h>', '<C-w>h<CR>', { silent = true, noremap = true })
@@ -25,9 +22,14 @@ set_keymap('n', '<C-j>', '<C-w>j<CR>', { silent = true, noremap = true })
 set_keymap('n', '<C-k>', '<C-w>k<CR>', { silent = true, noremap = true })
 set_keymap('n', '<C-l>', '<C-w>l<CR>', { silent = true, noremap = true })
 
--- misc
+-- nohighlight search
 set_keymap('n', '<Leader>h', ':nohlsearch<CR>', {})
+
+-- save change mode to blackhole register
 set_keymap('n', 'c', '"_c', { noremap = true })
+
+-- wrap/nowrap
+set_keymap('n', '<A-z>', ':set wrap!<CR>', {})
 
 -- move lines -- TODO not working
 -- set_keymap('v', 'J', [[ '>+1<cr>gv=gv ]], {})

@@ -1,0 +1,11 @@
+-- language servers
+require'sinclair.lsp/ts'
+require'sinclair.lsp/bash'
+require'sinclair.lsp/python'
+require'sinclair.lsp/css'
+require'sinclair.lsp/yaml'
+require'sinclair.lsp/svelte'
+require'sinclair.lsp/vue'
+require'sinclair.lsp/lua'
+require'sinclair.lsp/json'
+require'sinclair.lsp/html'

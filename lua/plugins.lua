@@ -1,3 +1,15 @@
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute 'packadd packer.nvim'
+end
+
+vim.cmd [[ packadd packer.nvim ]]
+
 return require'packer'.startup(function()
     use { 'wbthomason/packer.nvim', opt = true }
 
@@ -16,7 +28,10 @@ return require'packer'.startup(function()
     }
 
     use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-compe'
+    use 'nvim-lua/completion-nvim'
+    use 'tjdevries/lsp_extensions.nvim'
+
+    use 'sbdchd/neoformat'
     
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -28,8 +43,15 @@ return require'packer'.startup(function()
     use 'tpope/vim-fugitive'
     use 'airblade/vim-gitgutter'
 
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-fzy-native.nvim'
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {
+        {'nvim-lua/popup.nvim'}, 
+        {'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope-fzy-native.nvim'}
+      }
+    }
+
+    use 'chrisbra/improvedft'
+    use 'szw/vim-maximizer'
 end)
