@@ -31,6 +31,7 @@ require'telescope'.setup {
 }
 
 require'telescope'.load_extension('fzy_native')
+require'telescope'.load_extension('dap')
 
 local M = {}
 
@@ -53,16 +54,17 @@ end
 
 M.git_prs = function()
   pickers.new {
-  results_title = 'Resources',
-  finder = finders.new_oneshot_job({'gh', 'pr', 'list'}),
-  sorter = sorters.get_fuzzy_file(),
-  previewer = previewers.new_termopen_previewer {
-    get_command = function(entry)
-      -- might have to do a funky split to get the number
-      return {'gh', 'pr', 'view', entry.value}
-    end
-  },
-}:find()
+    results_title = 'Pull Requests',
+    finder = finders.new_oneshot_job({'gh', 'pr', 'list'}),
+    sorter = sorters.get_fuzzy_file(),
+    previewer = previewers.new_termopen_previewer {
+      get_command = function(entry)
+        index, _ = entry.value:find("\t")
+        id = entry.value:sub(1, index - 1)
+        return {'gh', 'pr', 'view', id}
+      end
+    },
+  }:find()
 end
 
 require'sinclair.telescope.keymaps'

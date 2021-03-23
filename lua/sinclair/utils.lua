@@ -22,4 +22,25 @@ function M.create_augroup(name, cmds)
   execute('augroup END')
 end
 
+function M.reload(file)
+  package.loaded[file] = null
+  return require(file)
+end
+
+-- could use this to run all sorts of code - node/python etc etc
+-- Luadev seems to handle this pretty nicely, so just use that for now
+-- function M.execute(str)
+--   local ft = vim.bo.filetype
+--   if ft == 'lua' then 
+--     loadstring(str)()
+--   elseif ft == 'vim' then 
+--     vim.cmd('call execute( '..str..' )')
+--   end
+-- end
+
+-- function M.execute_line()
+--   local line = vim.api.nvim_get_current_line()
+--   execute(line)
+-- end
+
 return M

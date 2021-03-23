@@ -32,18 +32,46 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
-  fzf = {
+  ["BetterLua.vim"] = {
     loaded = true,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/start/fzf"
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/BetterLua.vim"
   },
-  ["fzf.vim"] = {
+  ["auto-pairs"] = {
     loaded = true,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/start/fzf.vim"
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/auto-pairs"
+  },
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/completion-nvim"
   },
   ["galaxyline.nvim"] = {
-    config = { "\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15statusline\frequire\0" },
+    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sinclair/statusline\frequire\0" },
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
+  improvedft = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/improvedft"
+  },
+  ["lsp_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  ["manillua.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/manillua.nvim"
+  },
+  neoformat = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
+  ["nlua.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -66,13 +94,37 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/conor/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
   ["space-vim-dark"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/space-vim-dark"
   },
+  ["telescope-fzy-native.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["vim-closetag"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-closetag"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-flog"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-flog"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -82,6 +134,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
+  ["vim-maximizer"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-maximizer"
+  },
+  ["vim-startify"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-startify"
+  },
   ["vim-wakatime"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-wakatime"
@@ -89,7 +149,7 @@ _G.packer_plugins = {
 }
 
 -- Config for: galaxyline.nvim
-try_loadstring("\27LJ\2\n*\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\15statusline\frequire\0", "config", "galaxyline.nvim")
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sinclair/statusline\frequire\0", "config", "galaxyline.nvim")
 END
 
 catch

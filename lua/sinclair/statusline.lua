@@ -1,5 +1,5 @@
 local gl = require('galaxyline')
-local utils = require('utils')
+local utils = require('sinclair/utils')
 
 local gls = gl.section
 gl.short_line_list = { 'defx', 'packager', 'vista' }

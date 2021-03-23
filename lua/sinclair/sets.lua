@@ -63,3 +63,7 @@ execute('hi Comment cterm=italic')
 -- Background
 execute('highlight Normal guibg=none')
 
+-- export set func for use elsewhere 
+local M = {}
+M.set = set
+return M

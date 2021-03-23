@@ -7,11 +7,8 @@ set_keymap('n', '<Leader>r', [[ :Runfile %<CR> ]], {})
 set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- switch buffers
-set_keymap('n', '<Leader><Tab>', ':bn<CR>', { noremap = true, silent = true })
-set_keymap('n', '<Leader><S-Tab>', ':bN<CR>', { noremap = true, silent = true })
-
--- TODO fix this mapping
--- set_keymap('n', '<Leader>q', 'bdelete<CR>', { noremap = true })
+set_keymap('n', '<Tab>', ':bn<CR>', { noremap = true, silent = true })
+set_keymap('n', '<S-Tab>', ':bN<CR>', { noremap = true, silent = true })
 
 -- maximise buffer
 set_keymap('n', '<Leader>f', ':MaximizerToggle!<CR>', { noremap = true })
@@ -56,3 +53,4 @@ set_keymap('n', '<Leader>t', ':terminal<CR>', { noremap = true })
 set_keymap('t', '<Esc>', [[ <C-\><C-n> ]], { noremap = true })
 set_keymap('t', '<C-h>', '<C-h>', { noremap = true })
 set_keymap('t', '<C-l>', '<C-l>', { noremap = true })
+

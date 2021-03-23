@@ -1,12 +1,12 @@
 vim.g.mapleader = ';'
 
-require'sets'
-require'plugins'
-
+require'sinclair/sets'
+require'sinclair/plugins'
 require'sinclair/lsp'
+require'sinclair/treesitter'
 require'sinclair/telescope'
 require'sinclair/git'
-
-require'keymaps'
-require'autocmds'
-require'commands'
+require'sinclair/keymaps'
+require'sinclair/autocmds'
+require'sinclair/commands'
+require'sinclair/debugger'
