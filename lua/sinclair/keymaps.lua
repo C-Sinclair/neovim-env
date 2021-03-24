@@ -3,9 +3,6 @@ local set_keymap = vim.api.nvim_set_keymap
 -- run file
 set_keymap('n', '<Leader>r', [[ :Runfile %<CR> ]], {})
 
--- tree
-set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-
 -- switch buffers
 set_keymap('n', '<Tab>', ':bn<CR>', { noremap = true, silent = true })
 set_keymap('n', '<S-Tab>', ':bN<CR>', { noremap = true, silent = true })

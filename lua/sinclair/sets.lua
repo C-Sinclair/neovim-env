@@ -1,6 +1,6 @@
 local execute = vim.api.nvim_command
 
-function set(opt)
+local function set(opt)
   execute('set '..opt)
 end
 
