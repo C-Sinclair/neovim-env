@@ -3,6 +3,7 @@ local previewers = require'telescope.previewers'
 local pickers = require'telescope.pickers'
 local sorters = require'telescope.sorters'
 local finders = require'telescope.finders'
+local state = require'telescope.actions.state'
 
 require'telescope'.setup {
   defaults = {
@@ -53,17 +54,34 @@ M.git_branches = function()
 end
 
 M.git_prs = function()
+  local function get_id(entry)
+    local index, _ = entry.value:find("\t")
+    local id = entry.value:sub(1, index - 1)
+    return id
+  end
+  local function open_pr()
+    local entry = state.get_selected_entry()
+    local id = get_id(entry)
+    os.execute('gh pr view -w '..id)
+  end
+  local function create_pr()
+    os.execute('gh pr create -w')
+  end
   pickers.new {
     results_title = 'Pull Requests',
     finder = finders.new_oneshot_job({'gh', 'pr', 'list'}),
     sorter = sorters.get_fuzzy_file(),
     previewer = previewers.new_termopen_previewer {
       get_command = function(entry)
-        index, _ = entry.value:find("\t")
-        id = entry.value:sub(1, index - 1)
+        local id = get_id(entry)
         return {'gh', 'pr', 'view', id}
       end
     },
+    attach_mappings = function(_, map)
+      map('i', '<CR>', open_pr)
+      map('i', '<C-c>', create_pr)
+      return true
+    end
   }:find()
 end
 

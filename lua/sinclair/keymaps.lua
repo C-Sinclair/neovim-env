@@ -38,8 +38,8 @@ set_keymap('i', ';;', '<Esc>A;<Esc>gi', {})
 set_keymap('i', ',,', '<Esc>A,<Esc>gi', {})
 
 -- tabbing
-set_keymap('v', '>', '>gv', { noremap = true, silent = true })
-set_keymap('v', '<', '<gv', { noremap = true, silent = true })
+set_keymap('v', '<Tab>', '>gv', { noremap = true, silent = true })
+set_keymap('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
 
 -- splits
 set_keymap('n', '<Leader>l', ':vsp<CR>', {})
