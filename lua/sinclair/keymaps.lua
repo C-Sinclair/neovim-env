@@ -51,3 +51,8 @@ set_keymap('t', '<Esc>', [[ <C-\><C-n> ]], { noremap = true })
 set_keymap('t', '<C-h>', '<C-h>', { noremap = true })
 set_keymap('t', '<C-l>', '<C-l>', { noremap = true })
 
+-- remap ft keys to avoid <Leader> as ;
+vim.api.nvim_command [[ nnoremap <silent> <expr> <unique>< ftimproved#ColonCommand(0, 'n') ]]
+vim.api.nvim_command [[ nnoremap <silent> <expr> <unique>> ftimproved#ColonCommand(1, 'n') ]]
+vim.api.nvim_command [[ vnoremap <silent> <expr> <unique>< ftimproved#ColonCommand(0, 'v') ]]
+vim.api.nvim_command [[ vnoremap <silent> <expr> <unique>> ftimproved#ColonCommand(1, 'v') ]]

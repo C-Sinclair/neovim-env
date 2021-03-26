@@ -1,7 +1,7 @@
 local set_keymap = vim.api.nvim_set_keymap
 
 -- open buffers
-set_keymap('n', '<C-b>', [[ :lua require'telescope.builtin'.buffers()<CR> ]],  { noremap = true })
+set_keymap('n', '<C-b>', [[ :lua require'sinclair.telescope'.buffers()<CR> ]],  { noremap = true })
 
 -- open file
 set_keymap('n', '<C-p>', [[ :lua require'telescope.builtin'.find_files()<CR>]], { noremap = true })
