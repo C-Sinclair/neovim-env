@@ -1,7 +1,9 @@
 local set_keymap = vim.api.nvim_set_keymap
 
 -- run file
-set_keymap('n', '<Leader>r', [[ :Runfile %<CR> ]], {})
+set_keymap('n', '<Leader>rf', [[ :Runfile %<CR> ]], {})
+-- run single line
+set_keymap('n', '<Leader>rl', [[ :Runline<CR> ]], {})
 
 -- switch buffers
 set_keymap('n', '<Tab>', ':bn<CR>', { noremap = true, silent = true })

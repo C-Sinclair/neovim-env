@@ -59,6 +59,20 @@ M.search_dotfiles = function()
   }
 end
 
+M.pick_repo = function()
+  require'telescope.builtin'.file_browser {
+    prompt_title = '< Repos >',
+    cwd = '~/Repos',
+    attach_mappings = function(_, map)
+      map('i', '<c-o>', function()
+        local file = state.get_selected_entry()
+        os.command("nvim"..file)
+      end)
+      return true
+    end
+  }
+end
+
 M.git_branches = function()
   require("telescope.builtin").git_branches {
     attach_mappings = function(_, map)

@@ -1,4 +1,5 @@
 local execute = vim.api.nvim_command
+
 local M = {}
 
 function M.makeScratch()
@@ -10,13 +11,19 @@ end
 
 function M.runFile(file)
     -- if lua run file  
+
 end
 
+function M.runLine()
+  local str = vim.fn.getline('.') 
+  loadstring(str)()
+end 
+
 function M.newFile()
-    file = vim.fn.input('New file name')
-    print(vim.inspect(file))
-    execute(':e '..file)
-    execute(':!mkdir -p %:h')
+  local file = vim.fn.input('New file name')
+  -- print(vim.inspect(file))
+  execute(':e '..file)
+  execute(':!mkdir -p %:h')
 end
 
 return M

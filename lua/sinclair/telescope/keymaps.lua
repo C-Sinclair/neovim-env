@@ -12,3 +12,5 @@ set_keymap('n', '<C-f>', [[ :lua require'telescope.builtin'.live_grep()<CR>]], {
 -- search vim dotfiles
 set_keymap('n', '<Leader>v', [[ :lua require'sinclair.telescope'.search_dotfiles()<CR> ]], { noremap = true })
 
+-- open repos
+set_keymap('n', '<C-t>r', [[ :lua require'sinclair.telescope'.pick_repo()<CR> ]], { noremap = true })
