@@ -2,6 +2,12 @@ require'nvim-treesitter.configs'.setup{
   highlight = {
     enable = true 
   },
+  autotag = {
+    enable = true,
+  },
+  context_commentstring = {
+    enable = true
+  },
   playground = {
     enable = true,
     disable = {},
@@ -9,3 +15,5 @@ require'nvim-treesitter.configs'.setup{
     persist_queries = false,
   }
 }
+
+require('nvim-ts-autotag').setup()

@@ -57,6 +57,7 @@ return require'packer'.startup(function()
     
     -- comment
     use 'tpope/vim-commentary'
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- git
     use 'tpope/vim-fugitive'
@@ -77,9 +78,13 @@ return require'packer'.startup(function()
     use 'chrisbra/improvedft'
     use 'szw/vim-maximizer'
 
+    -- smooth scroll
+    use 'C-Sinclair/neoscroll.nvim'
+
     -- tags & brackets
-    use 'alvan/vim-closetag'
+    -- use 'alvan/vim-closetag'
     use 'jiangmiao/auto-pairs'
+    use 'windwp/nvim-ts-autotag'
 
     -- start screen 
     use 'mhinz/vim-startify'
