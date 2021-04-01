@@ -1,5 +1,9 @@
 local execute = vim.api.nvim_command
 
+P = function(c)
+  print(vim.inspect(c))
+end
+
 local M = {}
 
 function M.makeScratch()
@@ -9,9 +13,19 @@ function M.makeScratch()
     --  vim.bo[0].swapfile=false
 end
 
-function M.runFile(file)
-    -- if lua run file  
-
+-- run a visually selected block
+function M.runBlock()
+  local _, start_row, start_col, _ = unpack(vim.fn.getpos("'<"))
+  -- FIXME - vim.fn.getpos is not returning anything
+  local _, end_row, end_col, _ = unpack(vim.fn.getpos("'>"))
+  local lines = vim.fn.getline(start_row, end_row)
+  lines[1] = lines[1]:sub(start_col) -- might be +- 1 because of Lua's base 1 arrays
+  lines[-1] = lines[-1]:sub(0, end_col)
+  local str = ""
+  for v in ipairs(lines) do
+    str = str.." "..v
+  end
+  loadstring(str)()
 end
 
 function M.runLine()
