@@ -31,9 +31,12 @@ return require'packer'.startup(function()
 
     -- core lsp
     use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/completion-nvim'
     use 'tjdevries/lsp_extensions.nvim'
     use 'glepnir/lspsaga.nvim'
+
+    -- completion
+    -- use 'nvim-lua/completion-nvim'
+    use 'hrsh7th/nvim-compe'
 
     -- formatting
     use 'sbdchd/neoformat'

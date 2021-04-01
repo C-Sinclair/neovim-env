@@ -21,8 +21,6 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
-
-  require'sinclair.lsp.autocomplete'.on_attach()
 end
 
 local servers = { 
