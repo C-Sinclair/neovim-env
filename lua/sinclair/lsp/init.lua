@@ -1,13 +1,14 @@
+local coq = require'coq'
 local nvim_lsp = require'lspconfig'
 
-local set_keymap = vim.api.nvim_set_keymap
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local on_attach = function(_, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
@@ -23,6 +24,20 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local servers = { 
+  "tsserver",
+  "jsonls",
+  "yamlls"
+}
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
+local set_keymap = vim.api.nvim_set_keymap
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
@@ -33,30 +48,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
 vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
 
-local servers = { 
-  "pyright", 
-  "rust_analyzer", 
-  "tsserver",
-  "bashls",
-  "cssls",
-  "html",
-  "jsonls",
-  "yamlls",
-  "svelte",
-  "vuels"
-}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
-
-require'nlua.lsp.nvim'.setup(require'lspconfig', {
-  on_attach = on_attach,
-  globals = {
-    'use'
-  }
-})
-
-require'lspsaga'.init_lsp_saga()
+-- require'lspsaga'.init_lsp_saga()
 
 -- code references
 set_keymap('n', 'gr', [[ :lua require'telescope.builtin'.lsp_references()<CR> ]], { noremap = true })

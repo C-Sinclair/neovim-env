@@ -10,44 +10,66 @@ end
 
 vim.cmd [[ packadd packer.nvim ]]
 
-return require'packer'.startup(function()
+return require'packer'.startup(function(use)
     use { 'wbthomason/packer.nvim', opt = true }
 
     -- statusline
+    -- use {
+    --     'glepnir/galaxyline.nvim',
+    --     branch = 'main',
+    --     -- your statusline
+    --     config = function() require'sinclair/statusline' end,
+    --     -- some optional icons
+    --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    -- }
     use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- your statusline
-        config = function() require'sinclair/statusline' end,
-        -- some optional icons
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
+    "hoob3rt/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  }
+
+    -- tabs
+    use {
+    "akinsho/nvim-bufferline.lua",
+    requires = "kyazdani42/nvim-web-devicons",
+  }
 
     -- explorer
     use {
         'kyazdani42/nvim-tree.lua', 
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
     }
 
     -- core lsp
     use 'neovim/nvim-lspconfig'
+    -- use 'kabouzeid/nvim-lspinstall'
     use 'tjdevries/lsp_extensions.nvim'
     use 'glepnir/lspsaga.nvim'
 
     -- completion
     -- use 'nvim-lua/completion-nvim'
-    use 'hrsh7th/nvim-compe'
+    -- use 'hrsh7th/nvim-cmp'
+    -- use 'hrsh7th/cmp-nvim-lsp'
+    use 'ms-jpq/coq_nvim'
+    use 'ms-jpq/coq.artifacts'
 
     -- formatting
-    use 'sbdchd/neoformat'
+    -- use 'sbdchd/neoformat'
+    use "mhartington/formatter.nvim"
     
     -- parsing
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use 'nvim-treesitter/playground'
+    -- use 'nvim-treesitter/playground'
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     -- debugging
-    use 'mfussenegger/nvim-dap'
-    use 'nvim-telescope/telescope-dap.nvim'
+    -- use 'mfussenegger/nvim-dap'
+    -- use 'nvim-telescope/telescope-dap.nvim'
+
+    -- errors
+     use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+  }
 
     -- stats
     use 'wakatime/vim-wakatime'
@@ -57,12 +79,18 @@ return require'packer'.startup(function()
     
     -- comment
     use 'tpope/vim-commentary'
-    use 'JoosepAlviste/nvim-ts-context-commentstring'
+    -- use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- git
-    use 'tpope/vim-fugitive'
-    use 'airblade/vim-gitgutter'
-    use 'rbong/vim-flog'
+    -- use 'tpope/vim-fugitive'
+    -- use 'airblade/vim-gitgutter'
+    -- use 'rbong/vim-flog'
+    use {
+    "lewis6991/gitsigns.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  }
 
     -- telescope
     use {
@@ -75,11 +103,11 @@ return require'packer'.startup(function()
     }
 
     -- movement
-    use 'chrisbra/improvedft'
-    use 'szw/vim-maximizer'
+    -- use 'chrisbra/improvedft'
+    -- use 'szw/vim-maximizer'
 
     -- smooth scroll
-    use 'C-Sinclair/neoscroll.nvim'
+    -- use 'C-Sinclair/neoscroll.nvim'
 
     -- tags & brackets
     -- use 'alvan/vim-closetag'
@@ -87,14 +115,55 @@ return require'packer'.startup(function()
     use 'windwp/nvim-ts-autotag'
 
     -- start screen 
-    use 'mhinz/vim-startify'
+    -- use 'mhinz/vim-startify'
+    -- use {
+    --   'tweekmonster/startuptime.vim',
+    --   opt = true
+    -- }
+    use {
+    "glepnir/dashboard-nvim",
+    opt = true,
+    cmd = {
+      "Dashboard",
+      "DashboardChangeColorscheme",
+      "DashboardFindFile",
+      "DashboardFindHistory",
+      "DashboardFindWord",
+      "DashboardJumpMarks",
+      "DashboardNewfile",
+    },
+  }
 
     -- lua
-    use 'tjdevries/nlua.nvim'
-    use 'euclidianAce/BetterLua.vim'
-    use 'tjdevries/manillua.nvim'
+    -- use 'tjdevries/nlua.nvim'
+    -- use 'euclidianAce/BetterLua.vim'
+    -- use 'tjdevries/manillua.nvim'
     -- use 'bfredl/nvim-luadev'
     
-    use 'peitalin/vim-jsx-typescript'
+    -- jsx
+    -- use 'peitalin/vim-jsx-typescript'
+    use {
+       'maxmellon/vim-jsx-pretty', 
+       opt = true
+    }
 
+    -- wildmenu
+    use 'gelguy/wilder.nvim'
+
+    -- highlight
+    use   'folke/twilight.nvim'
+
+    -- keys
+    use {
+      'folke/which-key.nvim',
+      config = function()
+        require'which-key'.setup()
+      end
+    }
+
+    -- tmux
+    -- use 'christoomey/vim-tmux-navigator'
+    
+    -- markdown
+    use {"ellisonleao/glow.nvim", run = "GlowInstall"}
 end)

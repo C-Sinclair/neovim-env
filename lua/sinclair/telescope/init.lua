@@ -32,7 +32,7 @@ require'telescope'.setup {
 }
 
 require'telescope'.load_extension('fzy_native')
-require'telescope'.load_extension('dap')
+-- require'telescope'.load_extension('dap')
 
 local function get_id(value)
   local index, _ = value:find("\t")

@@ -9,9 +9,6 @@ set_keymap('n', '<Leader>rl', [[ :Runline<CR> ]], {})
 set_keymap('n', '<Tab>', ':bn<CR>', { noremap = true, silent = true })
 set_keymap('n', '<S-Tab>', ':bN<CR>', { noremap = true, silent = true })
 
--- maximise buffer
-set_keymap('n', '<Leader>f', ':MaximizerToggle!<CR>', { noremap = true })
-
 -- movements
 set_keymap('n', '<C-h>', '<C-w>h<CR>', { silent = true, noremap = true })
 set_keymap('n', '<C-j>', '<C-w>j<CR>', { silent = true, noremap = true })
@@ -52,9 +49,3 @@ set_keymap('n', '<Leader>t', ':terminal<CR>', { noremap = true })
 set_keymap('t', '<Esc>', [[ <C-\><C-n> ]], { noremap = true })
 set_keymap('t', '<C-h>', '<C-h>', { noremap = true })
 set_keymap('t', '<C-l>', '<C-l>', { noremap = true })
-
--- remap ft keys to avoid <Leader> as ;
-vim.api.nvim_command [[ nnoremap <silent> <expr> <unique>< ftimproved#ColonCommand(0, 'n') ]]
-vim.api.nvim_command [[ nnoremap <silent> <expr> <unique>> ftimproved#ColonCommand(1, 'n') ]]
-vim.api.nvim_command [[ vnoremap <silent> <expr> <unique>< ftimproved#ColonCommand(0, 'v') ]]
-vim.api.nvim_command [[ vnoremap <silent> <expr> <unique>> ftimproved#ColonCommand(1, 'v') ]]
