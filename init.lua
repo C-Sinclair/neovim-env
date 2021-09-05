@@ -20,6 +20,7 @@ require'sinclair/statusline'
 require'sinclair/trouble'
 require'sinclair/wilder'
 require'sinclair/formatter'
+require'sinclair/venn'
 
 require'sinclair/autocmds'
 

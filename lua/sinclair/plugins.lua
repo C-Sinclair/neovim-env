@@ -45,6 +45,9 @@ return require'packer'.startup(function(use)
     use 'tjdevries/lsp_extensions.nvim'
     use 'glepnir/lspsaga.nvim'
 
+    -- lsp hooks
+    use 'jose-elias-alvarez/null-ls.nvim'
+
     -- completion
     -- use 'nvim-lua/completion-nvim'
     -- use 'hrsh7th/nvim-cmp'
@@ -135,8 +138,8 @@ return require'packer'.startup(function(use)
   }
 
     -- lua
-    -- use 'tjdevries/nlua.nvim'
-    -- use 'euclidianAce/BetterLua.vim'
+    use 'tjdevries/nlua.nvim'
+    use 'euclidianAce/BetterLua.vim'
     -- use 'tjdevries/manillua.nvim'
     -- use 'bfredl/nvim-luadev'
     
@@ -166,4 +169,28 @@ return require'packer'.startup(function(use)
     
     -- markdown
     use {"ellisonleao/glow.nvim", run = "GlowInstall"}
+
+    -- ascii
+    use "jbyuki/venn.nvim"
+
+    -- notes
+    use { 
+    "vhyrro/neorg",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}, -- Load all the default modules
+                ["core.norg.concealer"] = {}, -- Allows for use of icons
+                ["core.norg.dirman"] = { -- Manage your directories with Neorg
+                    config = {
+                        workspaces = {
+                            notes = "~/Dropbox/notes"
+                        }
+                    }
+                }
+            },
+        }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+}
 end)
