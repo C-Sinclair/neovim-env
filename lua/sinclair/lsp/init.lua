@@ -5,14 +5,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
-	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec([[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
       hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
       hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
@@ -21,22 +20,20 @@ local on_attach = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
-			false
-		)
-	end
+    ]], false)
+    end
 end
 
 local servers = {
-	"tsserver",
-	"jsonls",
-	"yamlls",
+    "tsserver", "jsonls", "yamlls", "prismals", "pyright", "rust_analyzer",
+    "graphql", "gopls"
 }
 for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities({
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}))
+    nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        flags = {debounce_text_changes = 150}
+    }))
 end
 
 -- efm 
@@ -49,7 +46,7 @@ require"lspconfig".efm.setup {
         languages = {
             lua = {
                 {
-                    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=150 --break-after-table-lb",
+                    formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=80 --break-after-table-lb",
                     formatStdin = true
                 }
             }
@@ -58,36 +55,49 @@ require"lspconfig".efm.setup {
 }
 
 -- lua
-require('nlua.lsp.nvim').setup(nvim_lsp, {
-  on_attach = on_attach,
-})
+require('nlua.lsp.nvim').setup(nvim_lsp, {on_attach = on_attach})
 
 local set_keymap = vim.api.nvim_set_keymap
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = false,
-	underline = true,
-	signs = true,
-})
-vim.cmd([[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]])
-vim.cmd([[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]])
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+                 {virtual_text = false, underline = true, signs = true})
+-- vim.cmd([[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]])
+-- vim.cmd([[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]])
 
 -- require'lspsaga'.init_lsp_saga()
 
 -- code references
-set_keymap("n", "gr", [[ :lua require'telescope.builtin'.lsp_references()<CR> ]], { noremap = true })
+set_keymap("n", "gr",
+           [[ :lua require'telescope.builtin'.lsp_references()<CR> ]],
+           {noremap = true})
 
 -- goto definition
-set_keymap("n", "gd", [[ :lua require'telescope.builtin'.lsp_definitions()<CR> ]], { noremap = true })
+set_keymap("n", "gd",
+           [[ :lua require'telescope.builtin'.lsp_definitions()<CR> ]],
+           {noremap = true})
 
 -- goto type def
-set_keymap("n", "gt", [[ :lua vim.lsp.buf.type_definition()<CR> ]], { noremap = true })
+set_keymap("n", "gt", [[ :lua vim.lsp.buf.type_definition()<CR> ]],
+           {noremap = true})
 
 -- open hover
-set_keymap("n", "KK", [[ :lua require'lspsaga.hover'.render_hover_doc()<CR> ]], { noremap = true })
+set_keymap("n", "KK", [[ :lua vim.lsp.buf.hover()<CR> ]], {noremap = true})
+-- set_keymap("n", "KK", [[ :lua require'lspsaga.hover'.render_hover_doc()<CR> ]],
+--            {noremap = true})
 
 -- code actions
-set_keymap("n", "KA", [[ :lua require'lspsaga.codeaction'.code_action()<CR> ]], { noremap = true })
+set_keymap("n", "KA", [[ :lua vim.lsp.buf.code_action()<CR> ]], {noremap = true})
+-- set_keymap("n", "KA", [[ :lua require'lspsaga.codeaction'.code_action()<CR> ]],
+--            {noremap = true})
 
 -- quickfind refs
-set_keymap("n", "KF", [[ :lua require'lspsaga.provider'.lsp_finder()<CR> ]], { noremap = true })
+-- set_keymap("n", "KF", [[ :lua require'lspsaga.provider'.lsp_finder()<CR> ]],
+--            {noremap = true})
+
+set_keymap("n", "KL", [[:lua vim.lsp.diagnostic.show_line_diagnostics()<CR>]],
+           {noremap = true})
+set_keymap("n", "KH", [[:lua vim.lsp.buf.signature_help()<CR>]],
+           {noremap = true})
+
+require "sinclair/lsp/utils"

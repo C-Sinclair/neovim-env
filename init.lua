@@ -5,9 +5,9 @@ require 'sinclair/plugins'
 require 'sinclair/lsp'
 require 'sinclair/keymaps'
 require 'sinclair/autocomplete'
-require 'sinclair/commands'
 -- require'sinclair/debugger'
 require 'sinclair/jsx'
+require 'sinclair/utils'
 
 -- plugin specific
 require 'sinclair/bufferline'
@@ -20,5 +20,6 @@ require 'sinclair/statusline'
 require 'sinclair/trouble'
 require 'sinclair/wilder'
 require 'sinclair/venn'
+require 'sinclair/vimade'
 
 require 'sinclair/autocmds'

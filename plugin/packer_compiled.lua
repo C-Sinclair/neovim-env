@@ -69,9 +69,17 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["BetterLua.vim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/BetterLua.vim"
+  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/auto-pairs"
+  },
+  ["coq.artifacts"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/coq.artifacts"
   },
   coq_nvim = {
     loaded = true,
@@ -83,14 +91,13 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/conor/.local/share/nvim/site/pack/packer/opt/dashboard-nvim"
   },
-  ["formatter.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/opt/formatter.nvim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/glow.nvim"
   },
   ["lsp_extensions.nvim"] = {
     loaded = true,
@@ -104,6 +111,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  ["nlua.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nlua.nvim"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/null-ls.nvim"
+  },
   ["nvim-bufferline.lua"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
@@ -112,15 +127,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
-  ["nvim-lspinstall"] = {
-    loaded = true,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
-  },
   ["nvim-tree.lua"] = {
-    commands = { "NvimTreeToggle" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -133,10 +142,6 @@ _G.packer_plugins = {
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag"
-  },
-  ["nvim-ts-context-commentstring"] = {
-    loaded = true,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -155,14 +160,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  psql = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/psql"
+  },
   ["space-vim-dark"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/space-vim-dark"
-  },
-  ["startuptime.vim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/opt/startuptime.vim"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
@@ -172,14 +176,22 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ["todo-comments.nvim"] = {
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0" },
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
+  },
   ["trouble.nvim"] = {
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
   ["twilight.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/conor/.local/share/nvim/site/pack/packer/opt/twilight.nvim"
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/twilight.nvim"
+  },
+  ["venn.nvim"] = {
+    loaded = true,
+    path = "/home/conor/.local/share/nvim/site/pack/packer/start/venn.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -195,6 +207,7 @@ _G.packer_plugins = {
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/vim-wakatime"
   },
   ["which-key.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14which-key\frequire\0" },
     loaded = true,
     path = "/home/conor/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   },
@@ -205,11 +218,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: todo-comments.nvim
+time([[Config for todo-comments.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
+time([[Config for todo-comments.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardNewfile lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardNewfile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dashboard lua require("packer.load")({'dashboard-nvim'}, { cmd = "Dashboard", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardChangeColorscheme lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardChangeColorscheme", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DashboardFindFile lua require("packer.load")({'dashboard-nvim'}, { cmd = "DashboardFindFile", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])

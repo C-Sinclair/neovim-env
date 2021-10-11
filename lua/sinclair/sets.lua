@@ -1,7 +1,7 @@
 local execute = vim.api.nvim_command
 
 local function set(opt)
-  execute('set '..opt)
+    execute('set ' .. opt)
 end
 
 -- undo
@@ -56,45 +56,29 @@ set('shortmess+=c')
 
 set('wildcharm=<C-z>')
 
-set('termguicolors')     -- enable true colors support
+set('termguicolors') -- enable true colors support
 execute('colorscheme space-vim-dark')
 execute('hi Comment cterm=italic')
 
 -- Background
 execute('highlight Normal guibg=none')
 
-vim.g.coq_settings = {
-  auto_start = true,
-  keymap = { 
-    jump_to_mark = "<c-y><c-h>"
-  }
-}
+-- move up and down over "non" physical lines
+vim.api.nvim_set_keymap('n', 'j', 'gj', {noremap = true})
+vim.api.nvim_set_keymap('n', 'k', 'gk', {noremap = true})
+
+-- Coq
+vim.g.coq_settings = {auto_start = true, keymap = {jump_to_mark = "<c-y><c-h>"}}
 
 -- Unset unneeded builtins
 local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit",
+    "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers", "gzip", "zip",
+    "zipPlugin", "tar", "tarPlugin", "getscript", "getscriptPlugin", "vimball",
+    "vimballPlugin", "2html_plugin", "logipat", "rrhelper", "spellfile_plugin",
+    "matchit"
 }
 
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
-end
+for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
 
 -- export set func for use elsewhere 
 local M = {}

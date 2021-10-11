@@ -33,6 +33,13 @@ function M.reload()
     end
 end
 
+-- Global! 
+-- print and return a value
+function P(v)
+    print(vim.inspect(v))
+    return v
+end
+
 -- could use this to run all sorts of code - node/python etc etc
 -- Luadev seems to handle this pretty nicely, so just use that for now
 -- function M.execute(str)
@@ -48,5 +55,23 @@ end
 --   local line = vim.api.nvim_get_current_line()
 --   execute(line)
 -- end
+
+function M.make_popup()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local winid = vim.api.nvim_open_win(bufnr, true, {
+        relative = 'win',
+        row = 3,
+        col = 3,
+        width = 50,
+        height = 50
+    })
+end
+
+function M.close_other_wins()
+    -- close all windows except current
+    for _, win in pairs(vim.api.nvim_list_wins()) do
+        if not (win == 1000) then vim.api.nvim_win_close(win, true) end
+    end
+end
 
 return M
