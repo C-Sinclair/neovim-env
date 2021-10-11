@@ -57,10 +57,19 @@ return require'packer'.startup(function(use)
 
     -- completion
     -- use 'nvim-lua/completion-nvim'
-    -- use 'hrsh7th/nvim-cmp'
-    -- use 'hrsh7th/cmp-nvim-lsp'
-    use 'ms-jpq/coq_nvim'
-    use 'ms-jpq/coq.artifacts'
+
+    -- cmp
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-nvim-lsp'
+
+    -- coq
+    -- use 'ms-jpq/coq_nvim'
+    -- use 'ms-jpq/coq.artifacts'
+
+    -- snippets
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
 
     -- formatting
     -- use 'sbdchd/neoformat'
@@ -202,5 +211,8 @@ return require'packer'.startup(function(use)
 
     -- ui components
     -- use 'MunifTanjim/nui.nvim'
+
+    -- harpoon those files
+    use 'ThePrimeagen/harpoon'
 
 end)

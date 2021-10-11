@@ -28,13 +28,6 @@ set_keymap('n', '<A-w>', ':bp | bd #<CR>', {silent = true})
 -- reopen last closed buffer 
 set_keymap('n', '<A-t>', ':e #<CR>', {silent = true})
 
--- move lines -- TODO not working
--- set_keymap('v', 'J', [[ '>+1<cr>gv=gv ]], {})
--- set_keymap('v', 'K', [[ '<-2<cr>gv=gv ]], {})
-
--- search -- TODO not working
--- set_keymap('v', '*', [[ y:let @/=@"<CR> ]], {}) 
-
 -- insert mode -- TODO go back to dropped mark 
 set_keymap('i', '<C-S>', '<Esc>:w<CR>', {})
 

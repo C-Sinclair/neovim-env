@@ -40,22 +40,6 @@ function P(v)
     return v
 end
 
--- could use this to run all sorts of code - node/python etc etc
--- Luadev seems to handle this pretty nicely, so just use that for now
--- function M.execute(str)
---   local ft = vim.bo.filetype
---   if ft == 'lua' then 
---     loadstring(str)()
---   elseif ft == 'vim' then 
---     vim.cmd('call execute( '..str..' )')
---   end
--- end
-
--- function M.execute_line()
---   local line = vim.api.nvim_get_current_line()
---   execute(line)
--- end
-
 function M.make_popup()
     local bufnr = vim.api.nvim_get_current_buf()
     local winid = vim.api.nvim_open_win(bufnr, true, {
